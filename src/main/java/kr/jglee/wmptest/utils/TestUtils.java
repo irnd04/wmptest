@@ -35,12 +35,12 @@ public class TestUtils {
 	// [a-zA-Z0-9]+ 문자만 추출하여 소트
 	private static ArrayList<Character> numalpha(String s, boolean rmtag) {
 		ArrayList<Character> numalpha = new ArrayList<Character>();
-		boolean isopen = false;
+		int isopen = 0;
 		for (char c : s.toCharArray()) {
-			if (c == '<') isopen = true;
-			else if (c == '>') isopen = false;
+			if (c == '<') isopen++;
+			else if (c == '>') isopen--;
 			if (!inrange(c)) continue;
-			if (rmtag && isopen) continue;
+			if (rmtag && isopen != 0) continue;
 			numalpha.add(c);
 		}
 		Collections.sort(numalpha, (a, b) -> order[a] - order[b]);

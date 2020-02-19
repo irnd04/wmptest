@@ -3,6 +3,7 @@ package kr.jglee.wmptest;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.math.BigInteger;
+import java.util.Arrays;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -85,6 +86,8 @@ public class HomeController {
 		boolean rmtag = type.equals("rmtag") ? true : false;
 		
 		begin = System.currentTimeMillis();
+		// String teststr = "html<<htmlzcvdfj>313>12</html>";
+		// char[] result = TestUtils.test(teststr, rmtag);
 		char[] result = TestUtils.test(doc.toString(), rmtag);
 		end = System.currentTimeMillis();
 		logger.info("[PARSE] {}ms", end - begin);
@@ -106,6 +109,7 @@ public class HomeController {
 		request.setAttribute("url", url);
 		request.setAttribute("type", type);
 		request.setAttribute("unit", unit);
+		
 		
 		return "home";
 	}
