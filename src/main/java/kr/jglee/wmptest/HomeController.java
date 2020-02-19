@@ -32,27 +32,15 @@ public class HomeController {
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(String url, String type, String unit) throws IOException {
-		if (TestUtils.isempty(url))
-			url = "https://front.wemakeprice.com/main";
-		
-		if (TestUtils.isempty(type))
-			type = "all";
-		
-		if (TestUtils.isempty(unit))
-			unit = "1";
-		
+		if (TestUtils.isempty(url)) url = "https://front.wemakeprice.com/main";
+		if (TestUtils.isempty(type)) type = "all";
+		if (TestUtils.isempty(unit)) unit = "1";
 		String goUrl = url;
-		
-		if (goUrl.matches("^\\/\\/.*$"))
-			goUrl = "http:" + goUrl;
-		
-		if (!goUrl.matches("^https?:\\/\\/.*$"))
-			goUrl = "http://" + goUrl;
-		
+		if (goUrl.matches("^\\/\\/.*$")) goUrl = "http:" + goUrl;
+		if (!goUrl.matches("^https?:\\/\\/.*$")) goUrl = "http://" + goUrl;
 		long begin, end;
 		
 		begin = System.currentTimeMillis();
-		
 		Document doc;
 		try {
 			doc = Jsoup.connect(goUrl)
@@ -79,12 +67,10 @@ public class HomeController {
 			pw.close();
 			return null;
 		}
-		
 		end = System.currentTimeMillis();
 		logger.info("[GET  ] {} {}ms", url, end - begin);
 		
 		boolean rmtag = type.equals("rmtag") ? true : false;
-		
 		begin = System.currentTimeMillis();
 		// String teststr = "html<<htmlzcvdfj>313>12</html>";
 		// char[] result = TestUtils.test(teststr, rmtag);
@@ -109,10 +95,8 @@ public class HomeController {
 		request.setAttribute("url", url);
 		request.setAttribute("type", type);
 		request.setAttribute("unit", unit);
-		
-		
+				
 		return "home";
 	}
-	
 }
 
