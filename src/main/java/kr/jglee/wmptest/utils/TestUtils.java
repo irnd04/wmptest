@@ -24,7 +24,7 @@ public class TestUtils {
 	public static boolean isoverflow(String mod) {
 		BigInteger big = new BigInteger(mod);
 		BigInteger imax = new BigInteger(Integer.MAX_VALUE + "");
-		return big.compareTo(imax) == 1;
+		return big.compareTo(imax) > 0;
 	}
 	
 	public static boolean isempty(String s) {
