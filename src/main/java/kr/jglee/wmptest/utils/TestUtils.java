@@ -47,7 +47,7 @@ public class TestUtils {
 		int isopen = 0;
 		for (char c : s.toCharArray()) {
 			if (c == '<') isopen++;
-			else if (c == '>' && isopen > 0) isopen--;
+			else if (c == '>' && isopen > 0) isopen--; // 열림기호가 앞에 없음에도 닫힘기호 등장시 무시함.
 			if (!inrange(c)) continue;
 			if (rmtag && isopen > 0) continue;
 			numalpha.add(c);

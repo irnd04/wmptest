@@ -72,8 +72,8 @@ public class HomeController {
 		
 		boolean rmtag = type.equals("rmtag") ? true : false;
 		begin = System.currentTimeMillis();
-		// String teststr = "html<<htmlzcvdfj>313>12</html>";
-		// char[] result = TestUtils.test(teststr, rmtag);
+//		String teststr = "html<<htmlzcvdfj>>>>>>>>>>>313>12</html>";
+//		char[] result = TestUtils.test(teststr, rmtag);
 		char[] result = TestUtils.test(doc.toString(), rmtag);
 		end = System.currentTimeMillis();
 		logger.info("[PARSE] {}ms", end - begin);
