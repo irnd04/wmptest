@@ -78,13 +78,8 @@ public class HomeController {
 		end = System.currentTimeMillis();
 		logger.info("[PARSE] {}ms", end - begin);
 		
-		BigInteger big = new BigInteger(unit);
-		BigInteger imax = new BigInteger(Integer.MAX_VALUE + "");
-		
-		// Integer.MAX_VALUE를 넘어가는값은 처리가 불가능.
-		// 자바의 배열크기는 int범위내에서 가능하다.
 		int mod = Integer.MAX_VALUE;
-		if (big.compareTo(imax) != 1)
+		if (!TestUtils.isoverflow(unit))
 			mod = Integer.parseInt(unit);
 		
 		int remainder = result.length % mod;

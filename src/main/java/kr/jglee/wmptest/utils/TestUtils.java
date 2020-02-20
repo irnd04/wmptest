@@ -1,5 +1,6 @@
 package kr.jglee.wmptest.utils;
 
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -16,6 +17,14 @@ public class TestUtils {
 			order[i] = v++;
 			order[i + sub] = v++;
 		}	
+	}
+
+	// Integer.MAX_VALUE를 넘어가는값은 처리가 불가능.
+	// 자바의 배열크기는 int범위내에서 가능하다.
+	public static boolean isoverflow(String mod) {
+		BigInteger big = new BigInteger(mod);
+		BigInteger imax = new BigInteger(Integer.MAX_VALUE + "");
+		return big.compareTo(imax) == 1;
 	}
 	
 	public static boolean isempty(String s) {
@@ -38,9 +47,9 @@ public class TestUtils {
 		int isopen = 0;
 		for (char c : s.toCharArray()) {
 			if (c == '<') isopen++;
-			else if (c == '>') isopen--;
+			else if (c == '>' && isopen > 0) isopen--;
 			if (!inrange(c)) continue;
-			if (rmtag && isopen != 0) continue;
+			if (rmtag && isopen > 0) continue;
 			numalpha.add(c);
 		}
 		Collections.sort(numalpha, (a, b) -> order[a] - order[b]);
