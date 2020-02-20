@@ -64,7 +64,6 @@ public class HomeController {
 			if (TestUtils.isempty(ctx)) ctx = "/";
 			String alert = String.format("<script>alert('%s'); location.href='%s';</script>", 
 					"페이지를 가져오는데 실패하였습니다. 잠시후에 다시 시도해주세요.", ctx);
-			System.out.println(alert);
 			pw.println(alert);
 			pw.close();
 			return null;
