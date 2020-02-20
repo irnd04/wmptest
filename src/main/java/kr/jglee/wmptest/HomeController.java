@@ -33,6 +33,7 @@ public class HomeController {
 		if (TestUtils.isempty(url)) url = "https://front.wemakeprice.com/main";
 		if (TestUtils.isempty(type)) type = "all";
 		if (TestUtils.isempty(unit)) unit = "1";
+		if (unit.startsWith("-") || unit.startsWith("0")) unit = "1";
 		String goUrl = url;
 		if (goUrl.matches("^\\/\\/.*$")) goUrl = "http:" + goUrl;
 		if (!goUrl.matches("^https?:\\/\\/.*$")) goUrl = "http://" + goUrl;
