@@ -2,8 +2,6 @@ package kr.jglee.wmptest;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.math.BigInteger;
-import java.util.Arrays;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -32,7 +30,7 @@ public class HomeController {
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(String url, String type, String unit) throws IOException {
-		if (TestUtils.isempty(url)) url = "https://front.wemakeprice.com/main";
+		if (TestUtils.isempty(url)) url = "http://localhost:8080";
 		if (TestUtils.isempty(type)) type = "all";
 		if (TestUtils.isempty(unit)) unit = "1";
 		String goUrl = url;
