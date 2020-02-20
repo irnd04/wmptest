@@ -63,9 +63,9 @@ public class TestUtils {
 	
 	private static int upperBound(ArrayList<Character> numalpha, int begin, int end, int key){
 		int mid;
-		while(begin < end){
+		while (begin < end){
 			mid = (begin + end) / 2;
-			if(numalpha.get(mid) <= key) begin = mid + 1;
+			if (numalpha.get(mid) <= key) begin = mid + 1;
 			else end = mid;
 		}
 		return end;
