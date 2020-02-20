@@ -35,7 +35,7 @@ public class HomeController {
 		if (TestUtils.isempty(unit)) unit = "1";
 		if (unit.startsWith("-") || unit.startsWith("0")) unit = "1";
 		String goUrl = url;
-		if (goUrl.matches("^\\/\\/.*$")) goUrl = "http:" + goUrl;
+		if (goUrl.startsWith("//")) goUrl = "http:" + goUrl;
 		if (!goUrl.matches("^https?:\\/\\/.*$")) goUrl = "http://" + goUrl;
 		long begin, end;
 		
