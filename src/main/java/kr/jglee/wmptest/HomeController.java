@@ -74,9 +74,9 @@ public class HomeController {
 		logger.info("[GET  ] {} {}ms", url, end - begin);
 		
 		boolean rmtag = type.equals("rmtag") ? true : false;
+		if (!rmtag) type = "all";
+		
 		begin = System.currentTimeMillis();
-//		String teststr = "html<<htmlzcvdfj>>>>>>>>>>>313>12</html>";
-//		char[] result = TestUtils.test(teststr, rmtag);
 		char[] result = TestUtils.test(doc.toString(), rmtag);
 		end = System.currentTimeMillis();
 		logger.info("[PARSE] {}ms", end - begin);
